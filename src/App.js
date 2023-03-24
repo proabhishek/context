@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import PackageContext from "./Context";
+import Provider from "./Provider";
 
-function App() {
+
+
+const Smile=()=>{
+      return(
+           <PackageContext.Consumer>
+
+            {
+                (info) => (
+                    <div>
+                           <h1>Name of the Cricketer  is:  {info.data.name}</h1>
+                            <h2>Age of the Cricketer is: {info.data.age}</h2>
+                            <h3>Country of the Cricketer is: {info.data.country}</h3>
+                            <h4>Runs of the Cricketer is: {info.data.runs}</h4>
+                            <h5>Wickets of the Cricketer is: {info.data.wickets}</h5>
+                            <button onClick={info.updateAge}>Update Sachin Age</button>
+                    </div>
+                )
+
+            }
+            
+           </PackageContext.Consumer>
+      )
+}
+
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Hello World!</h1> 
+
+        <Provider>
+            <Smile/>
+        </Provider>
     </div>
   );
 }
